@@ -1,0 +1,4 @@
+#requireResource("confluence.web.resources:ajs")
+<iframe src="${url}/view"
+    width="${width}" height="${height}" frameborder="0" scrolling="no">
+</iframe>
