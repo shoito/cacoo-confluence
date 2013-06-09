@@ -7,15 +7,15 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.shoito.confluence.integration</groupId>
     <artifactId>cacoo</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
 
     <organization>
         <name>shoito</name>
-        <url>http://github.com/shoito</url>
+        <url>http://about.me/shoito</url>
     </organization>
 
     <name>Cacoo Diagramming for Confluence</name>
-    <description>Add Wireframes, UI Mockups, UML / ER Diagrams and more to your wiki pages</description>
+    <description>Add Wireframes, UI Mockups, UML / ER Diagrams and more to your wiki pages from Cacoo.</description>
     <packaging>atlassian-plugin</packaging>
 
     <dependencies>
@@ -53,6 +53,7 @@
     </dependencies>
 
     <build>
+        <finalName>${groupId}.${artifactId}-${version}</finalName>
         <plugins>
             <plugin>
                 <groupId>com.atlassian.maven.plugins</groupId>

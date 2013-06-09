@@ -7,54 +7,34 @@
         <param name="plugin-logo">images/pluginLogo.png</param>
     </plugin-info>
 
+    <resource type="velocity" name="template" location="/template/embed.vm"/>
+
     <!-- add our i18n resource -->
     <resource type="i18n" name="i18n" location="cacoo-confluence"/>
-    
-    <!-- add our web resources -->
-    <web-resource key="cacoo-confluence-resources" name="cacoo-confluence-web-resources">
-        <dependency>com.atlassian.auiplugin:ajs</dependency>
-        <resource type="download" name="cacoo-confluence.css" location="/css/cacoo-confluence.css"/>
-        <resource type="download" name="cacoo-confluence.js" location="/js/cacoo-confluence.js"/>
-        <resource type="download" name="images/" location="/images"/>
 
-        <context>cacoo-confluence</context>
-    </web-resource>
+    <resource type="download" name="images/" location="/images">
+        <param name="content-type" value="image/png"/>
+    </resource>
 
     <xhtml-macro name="cacoo"
                  class="com.github.shoito.confluence.integration.cacoo.macro.CacooMacro"
                  key="cacoo-macro"
-                 icon="/download/resources/com.github.shoito.confluence.integration.cacoo:cacoo-confluence-resources/images/pluginLogo.png"
-                 documentation-url="https://github.com/shoito/cacoo-confluence/usage.md">
-        <description>Inserts Cacoo diagrams in the pages</description>
+                 icon="/download/resources/com.github.shoito.confluence.integration.cacoo/images/pluginLogo.png"
+                 documentation-url="https://github.com/shoito/cacoo-confluence/wiki">
+        <description>Inserts Cacoo diagrams into the page</description>
         <category name="visuals"/>
         <!--<category name="development"/>-->
         <!--<category name="external-content"/>-->
         <parameters>
-            <parameter name="diagram-url" type="string" required="true" default="https://cacoo.com/diagrams/pByowlpiZ7YTV7UN">
-                <option key="showNameInPlaceholder" value="false" />
-                <option key="showValueInPlaceholder" value="true" />
-            </parameter>
-            <parameter name="width" type="int" default="640">
-                <option key="showNameInPlaceholder" value="false" />
-                <option key="showValueInPlaceholder" value="true" />
-            </parameter>
-            <parameter name="height" type="int" default="480">
+            <parameter name="diagram-url" type="url" required="true" default="https://cacoo.com/diagrams/pByowlpiZ7YTV7UN">
                 <option key="showNameInPlaceholder" value="false" />
                 <option key="showValueInPlaceholder" value="true" />
             </parameter>
         </parameters>
     </xhtml-macro>
 
-    <web-item name="web-item: Insert Menu" key="editor-featured-macro-cacoo" section="system.editor.featured.macros.default" weight="11">
-        <description>Insert Cacoo Diagrams</description>
-        <label>Cacoo</label>
-        <icon height="16" width="16">
-            <link>/download/resources/com.github.shoito.confluence.integration.cacoo:cacoo-confluence-resources/images/pluginIcon.png</link>
-        </icon>
-        <link linkId="cacoo" />
-    </web-item>
-    
-    <!-- import from the product container -->
-    <component-import key="applicationProperties" interface="com.atlassian.sal.api.ApplicationProperties" />
-    
+    <servlet name="Editor Image Generator Servlet" key="editorImagegenerator" class="com.github.shoito.confluence.integration.cacoo.servlet.EditorImageGeneratorServlet">
+        <description>Generates a placeholder for the cacoo macro.</description>
+        <url-pattern>/cacoo-macro/placeholder</url-pattern>
+    </servlet>
 </atlassian-plugin>
