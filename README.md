@@ -8,7 +8,7 @@ Atlassian Marketplace
 ---
 https://marketplace.atlassian.com/plugins/com.github.shoito.confluence.integration.cacoo
 
-<img src="https://raw.github.com/shoito/cacoo-confluence/master/screenshot/banner.png" width="720">
+<img src="https://raw.github.com/shoito/cacoo-confluence/master/screenshot/banner.png" width="540">
 
 
 Install
@@ -20,7 +20,7 @@ Usage
 ---
 Inserting diagrams is intuitive and easy, just like inserting PNG/JPG files into Confluence wiki pages.
 
-1. Select "Insert -> Other Macros"
+1. Select "Insert More Content -> Other Macros"
   <img src="https://raw.github.com/shoito/cacoo-confluence/master/screenshot/cacoo-confluence00.png" width="720"/>
 
 1. Add [Cacoo Diagrams] Macro from [Select Macro] list
