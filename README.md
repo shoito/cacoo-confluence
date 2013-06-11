@@ -4,15 +4,34 @@ Cacoo Diagramming for Confluence
 "Cacoo Diagramming for Confluence" allows you to easily insert the diagrams
 that you created with Cacoo such as Wireframes, UI Mockups, UML / ER Diagrams into Confluence wiki pages.
 
+Atlassian Marketplace
+---
+https://marketplace.atlassian.com/plugins/com.github.shoito.confluence.integration.cacoo
+
+<img src="https://raw.github.com/shoito/cacoo-confluence/master/screenshot/banner.png" width="720">
+
+
+Install
+---
+You may download and install this using the Universal Plugin Manager inside of your Confluence.
+
 
 Usage
 ---
 Inserting diagrams is intuitive and easy, just like inserting PNG/JPG files into Confluence wiki pages.
 
-1. Copy "Diagram URL" from Cacoo
+1. Select "Insert -> Other Macros"
+  <img src="https://raw.github.com/shoito/cacoo-confluence/master/screenshot/cacoo-confluence00.png" width="720"/>
+
+1. Add [Cacoo Diagrams] Macro from [Select Macro] list
+  <img src="https://raw.github.com/shoito/cacoo-confluence/master/screenshot/cacoo-confluence01.png" width="720"/>
+
+1. Copy "Diagram URL" and change status to public on Cacoo
    ex.) [https://cacoo.com/diagrams/pByowlpiZ7YTV7UN](https://cacoo.com/diagrams/pByowlpiZ7YTV7UN)
-1. Add [Cacoo] Macro from [Select Macro] list
+  <img src="https://raw.github.com/shoito/cacoo-confluence/master/screenshot/cacoo-confluence02.png" width="720"/>
+
 1. Paste "Diagram URL" on Macro Browser
+  <img src="https://raw.github.com/shoito/cacoo-confluence/master/screenshot/cacoo-confluence03.png" width="720"/>
 
 
 What is Cacoo?
