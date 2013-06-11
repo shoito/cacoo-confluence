@@ -5,6 +5,18 @@ Cacoo Diagramming for Confluence
 that you created with Cacoo such as Wireframes, UI Mockups, UML / ER Diagrams into Confluence wiki pages.
 
 
+Atlassian Marketplace
+---
+https://marketplace.atlassian.com/plugins/com.github.shoito.confluence.integration.cacoo
+
+<img src="https://raw.github.com/shoito/cacoo-confluence/master/screenshot/banner.png" width="720">
+
+
+Install
+---
+You may download and install this using the Universal Plugin Manager inside of your Confluence.
+
+
 Usage
 ---
 Inserting diagrams is intuitive and easy, just like inserting PNG/JPG files into Confluence wiki pages.
