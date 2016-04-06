@@ -7,9 +7,9 @@ public class DiagramImageUtil {
     public static boolean validateUrl(String diagramImageUrl) {
         try {
             URL url = new URL(diagramImageUrl);
-            HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setInstanceFollowRedirects(false);
-            return connection.getResponseCode() ==  HttpURLConnection.HTTP_OK;
+            return connection.getResponseCode() == HttpURLConnection.HTTP_OK;
         } catch (Exception e) {
             return false;
         }
