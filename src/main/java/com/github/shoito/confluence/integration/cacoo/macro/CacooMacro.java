@@ -1,19 +1,16 @@
 package com.github.shoito.confluence.integration.cacoo.macro;
 
-import java.util.Map;
-
+import com.atlassian.confluence.content.render.image.ImageDimensions;
 import com.atlassian.confluence.content.render.xhtml.ConversionContext;
 import com.atlassian.confluence.macro.*;
-import com.atlassian.confluence.pages.PageManager;
-import com.atlassian.confluence.pages.thumbnail.Dimensions;
 import com.atlassian.confluence.renderer.radeox.macros.MacroUtils;
-import com.atlassian.confluence.setup.settings.SettingsManager;
 import com.atlassian.confluence.util.velocity.VelocityUtils;
 import com.github.shoito.confluence.integration.cacoo.util.DiagramImageUtil;
-import org.apache.velocity.VelocityContext;
 import org.slf4j.LoggerFactory;
 
-public class CacooMacro implements Macro, EditorImagePlaceholder {
+import java.util.Map;
+
+public class CacooMacro extends GenericVelocityMacro implements EditorImagePlaceholder {
     private static final org.slf4j.Logger logger = LoggerFactory.getLogger(CacooMacro.class);
     public static final String PARAM_DIAGRAM_URL = "diagram-url";
 
@@ -23,21 +20,13 @@ public class CacooMacro implements Macro, EditorImagePlaceholder {
     private static final int IMG_HEIGHT = 300;
     private static final String DEFAULT_DIAGRAM_URL = "https://cacoo.com/diagrams/pByowlpiZ7YTV7UN";
     private static final String TEMPLATE = "template/embed.vm";
-    private final PageManager pageManager;
-    private final SettingsManager settingsManager;
-
-    public CacooMacro(PageManager pageManager, SettingsManager settingsManager) {
-        this.pageManager = pageManager;
-        this.settingsManager = settingsManager;
-    }
 
     @Override
     public String execute(Map<String, String> params, String bodyContent,
                           ConversionContext conversionContext) throws MacroExecutionException {
         String diagramUrl = params.get(PARAM_DIAGRAM_URL);
         diagramUrl = (diagramUrl != null) ? diagramUrl : DEFAULT_DIAGRAM_URL;
-
-        VelocityContext context = new VelocityContext(MacroUtils.defaultVelocityContext());
+        Map<String, Object> context = MacroUtils.defaultVelocityContext();
         context.put("url", diagramUrl);
         return VelocityUtils.getRenderedTemplate(TEMPLATE, context);
     }
@@ -58,9 +47,9 @@ public class CacooMacro implements Macro, EditorImagePlaceholder {
         diagramUrl = (diagramUrl != null) ? diagramUrl : DEFAULT_DIAGRAM_URL;
 
         if (!DiagramImageUtil.validateUrl(diagramUrl + ".png")) {
-            return new DefaultImagePlaceholder(RESOURCE_FOLDER + "images/placeholder.png", new Dimensions(IMG_WIDTH, IMG_HEIGHT), true);
+            return new DefaultImagePlaceholder(RESOURCE_FOLDER + "images/placeholder.png", true, new ImageDimensions(IMG_WIDTH, IMG_HEIGHT));
         }
 
-        return new DefaultImagePlaceholder(String.format("%s?%s=%s", PLACEHOLDER_SERVLET, PARAM_DIAGRAM_URL, diagramUrl), new Dimensions(IMG_WIDTH, IMG_HEIGHT), true);
+        return new DefaultImagePlaceholder(String.format("%s?%s=%s", PLACEHOLDER_SERVLET, PARAM_DIAGRAM_URL, diagramUrl), true, new ImageDimensions(IMG_WIDTH, IMG_HEIGHT));
     }
 }
